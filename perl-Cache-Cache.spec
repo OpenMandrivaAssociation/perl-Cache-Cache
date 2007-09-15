@@ -3,7 +3,7 @@
 
 %define version 1.05
 
-%define	rel	1
+%define	rel	2
 %define release %mkrel %{rel}
 
 Summary: 	%{module} module for perl
