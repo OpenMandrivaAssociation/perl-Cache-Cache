@@ -27,6 +27,7 @@ BuildRequires:	perl(Error) >= 0.15
 BuildRequires:	perl(File::Spec) >= 0.82
 BuildRequires:	perl(IPC::ShareLite) >= 0.09
 BuildRequires:	perl(Storable) >= 1.014
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 Cache-Cache module for perl.  The Cache modules are designed to assist
