@@ -1,24 +1,16 @@
-%define module  Cache-Cache
-%define	modprefix Cache
+%define upstream_name    Cache-Cache
+%define upstream_version 1.06
 
-%define version 1.06
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
 
-%define	rel	1
-%define release %mkrel %{rel}
-
-Summary: 	%{module} module for perl
-Name: 		perl-%{module}
-Version: 	%{version}
-Release: 	%{release}
-License: 	GPL or Artistic
+Summary: 	%{upstream_name} module for perl
+License: 	GPL+ or Artistic
 Group: 		Development/Perl
-Source: 	ftp://ftp.perl.org/pub/CPAN/modules/by-module/%{modprefix}/%{module}-%{version}.tar.bz2
-Url: 		http://search.cpan.org/dist/%{module}
-BuildArch: 	noarch
-Requires: 	perl-Digest-SHA1 >= 2.02
-Requires:	perl-Error >= 0.15
-Requires:	perl-IPC-ShareLite >= 0.09
-Requires:	perl-Storable >= 1.0.14
+Url: 		http://search.cpan.org/dist/%{upstream_name}
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Cache/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel
 %endif
@@ -27,14 +19,19 @@ BuildRequires:	perl(Error) >= 0.15
 BuildRequires:	perl(File::Spec) >= 0.82
 BuildRequires:	perl(IPC::ShareLite) >= 0.09
 BuildRequires:	perl(Storable) >= 1.014
+BuildArch: 	noarch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
+Requires: 	perl-Digest-SHA1 >= 2.02
+Requires:	perl-Error >= 0.15
+Requires:	perl-IPC-ShareLite >= 0.09
+Requires:	perl-Storable >= 1.0.14
 
 %description
 Cache-Cache module for perl.  The Cache modules are designed to assist
 a developer in persisting data for a specified period of time.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -54,5 +51,4 @@ rm -rf %{buildroot}
 %defattr(444,root,root,755)
 %doc CHANGES COPYING CREDITS DISCLAIMER README STYLE
 %{_mandir}/*/*
-%{perl_vendorlib}/%{modprefix}
-
+%{perl_vendorlib}/Cache
