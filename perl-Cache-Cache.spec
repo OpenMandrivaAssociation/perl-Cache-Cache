@@ -1,15 +1,13 @@
 %define upstream_name    Cache-Cache
-%define upstream_version 1.06
-
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	6
+Version:	1.06
+Release:	7
 
 Summary:	%{upstream_name} module for perl
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Cache/%{upstream_name}-%{upstream_version}.tar.bz2
+Url:		https://metacpan.org/dist/%{upstream_name}
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Cache/%{upstream_name}-%{version}.tar.bz2
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -29,7 +27,7 @@ Cache-Cache module for perl.  The Cache modules are designed to assist
 a developer in persisting data for a specified period of time.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -55,9 +53,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 
 * Wed Jul 29 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 1.60.0-1mdv2011.0
 + Revision: 402985
-- rebuild using %%perl_convert_version
-
-* Mon Mar 02 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.06-1mdv2009.1
+- rebuild using %1.06 Mon Mar 02 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.06-1mdv2009.1
 + Revision: 346987
 - update to new version 1.06
 
